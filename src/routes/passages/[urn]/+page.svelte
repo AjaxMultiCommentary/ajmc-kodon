@@ -10,15 +10,24 @@
 
 	export let data;
 
-	$: comments = data.comments as Comment[];
-	$: currentPassage = data.currentPassage as PassageConfig;
+	const commentToHighlight = $page.url.searchParams.get('gloss');
+
+	$: comments = (data.comments as Comment[]).map((comment: Comment) => {
+		if (comment.citable_urn === commentToHighlight) {
+			return {
+				...comment,
+				isHighlighted: true
+			};
+		}
+
+		return comment;
+	});
+	$: currentPassage = data.currentPassage as unknown as PassageConfig;
 	$: metadata = data.metadata;
-	$: passages = data.passages as PassageConfig[];
+	$: passages = data.passages as unknown as PassageConfig[];
 	$: textContainers = data.textContainers as TextContainer[];
 
 	onMount(() => {
-		const commentToHighlight = $page.url.searchParams.get('gloss');
-
 		if (commentToHighlight) {
 			highlightComments([commentToHighlight]);
 		}
