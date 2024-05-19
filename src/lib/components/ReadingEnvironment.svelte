@@ -13,11 +13,10 @@
     export let metadata;
     export let passages;
     export let textContainers;
-    export let commentToHighlight;
-
-
 
     onMount(() => {
+        const commentToHighlight = $page.url.searchParams.get('gloss');
+
         if (commentToHighlight) {
             highlightComments([commentToHighlight]);
         }
