@@ -10,6 +10,7 @@
 
 	const dispatch = createEventDispatcher();
 
+	export let showHeatmap: boolean;
 	export let textContainer: TextContainer;
 
 	function dropTokensUntilStartOfComment(tokens: Word[], comment: Comment) {
@@ -17,7 +18,7 @@
 			tokens,
 			(t: Word) =>
 				!(
-					t.text.indexOf(_.first(comment.ctsUrn.tokens)) > -1 &&
+					t.text.indexOf(_.first(comment.ctsUrn.tokens) || '') > -1 &&
 					t.urn_index === _.first(comment.ctsUrn.tokenIndexes)
 				)
 		);
@@ -28,7 +29,7 @@
 			tokens,
 			(t: Word) =>
 				!(
-					t.text.indexOf(_.last(comment.ctsUrn.tokens)) > -1 &&
+					t.text.indexOf(_.last(comment.ctsUrn.tokens) || '') > -1 &&
 					t.urn_index === _.last(comment.ctsUrn.tokenIndexes)
 				)
 		);
@@ -36,7 +37,7 @@
 		const excludedToken =
 			tokens.find(
 				(t) =>
-					t.text.indexOf(_.last(comment.ctsUrn.tokens)) > -1 &&
+					t.text.indexOf(_.last(comment.ctsUrn.tokens) || '') > -1 &&
 					t.urn_index === _.last(comment.ctsUrn.tokenIndexes)
 			) || [];
 
@@ -125,14 +126,15 @@
 	<div class="flex justify-between">
 		<p class="max-w-prose indent-hanging">
 			{#each tokens as token (token.xml_id)}
-				<TextToken {token} on:highlightComments />
+				<TextToken {showHeatmap} {token} on:highlightComments />
 			{/each}
 		</p>
 		{#if wholeLineComments.length > 0}
 			<a
 				href={'#'}
 				role="button"
-				class={`base-content hover:opacity-70 cursor-pointer w-12 text-center inline-block comment-box-shadow comments-${wholeLineComments.length}`}
+				class={`base-content hover:opacity-70 cursor-pointer w-12 text-center inline-block comments-${wholeLineComments.length}`}
+				class:comment-box-shadow={showHeatmap}
 				tabindex="0"
 				on:click={() =>
 					dispatch(

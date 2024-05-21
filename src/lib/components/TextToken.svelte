@@ -3,13 +3,10 @@
 
 	import { createEventDispatcher } from 'svelte';
 
+	export let showHeatmap: boolean;
 	export let token: Word;
 
 	const dispatch = createEventDispatcher();
-
-	function getClass(t: Word) {
-		return `comment-box-shadow comments-${Math.min(t.comments?.length || 0, 10)}`;
-	}
 
 	function tokenTitleText(t: Word) {
 		const commentsLength = t.comments?.length || 0;
@@ -20,7 +17,8 @@
 
 <a
 	id={token.xml_id}
-	class={getClass(token)}
+	class={`comments-${Math.min(token.comments?.length || 0, 10)}`}
+	class:comment-box-shadow={showHeatmap}
 	class:cursor-pointer={token.comments?.length || 0 > 0}
 	role="button"
 	tabindex="0"

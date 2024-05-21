@@ -2,6 +2,7 @@
 	import type { PassageConfig } from '$lib/types';
 
 	import { base } from '$app/paths';
+	import { marked } from 'marked';
 
 	export let passages: PassageConfig[];
 	export let currentPassageUrn: string;
@@ -12,7 +13,7 @@
 		{#each passages as passage}
 			<li class="text-sm">
 				<a href="{base}/passages/{passage.urn}" class:active={passage.urn === currentPassageUrn}>
-					{passage.label}
+					{@html marked(passage.label)}
 					{passage.ref}
 				</a>
 			</li>
