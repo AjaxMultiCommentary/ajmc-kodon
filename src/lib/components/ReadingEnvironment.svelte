@@ -1,20 +1,33 @@
 <script lang="ts">
-	import type { Comment } from '$lib/types';
+	import type { Comment, PassageConfig, TextContainer } from '$lib/types';
 
+	import _ from 'lodash';
 	import { page } from '$app/stores';
+	import { marked } from 'marked';
+	import { onMount, tick } from 'svelte';
 	import CitableTextContainer from '$lib/components/CitableTextContainer.svelte';
 	import CollapsibleComment from '$lib/components/CollapsibleComment.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
-	import { marked } from 'marked';
-	import { onMount, tick } from 'svelte';
-	import type { ChangeEventHandler } from 'svelte/elements';
+	import FilterList from './FilterList.svelte';
 
 	export let comments: Comment[];
-	export let currentPassage;
+	export let currentPassage: PassageConfig;
 	export let metadata;
-	export let passages;
-	export let textContainers;
+	export let passages: PassageConfig[];
+	export let textContainers: TextContainer[];
 
+	$: commentCountsByCommentary = _.countBy(
+		comments,
+		(c) =>
+			c.commentaryAttributes?.creators?.map((cc) => cc.last_name).join(', ') +
+			` ${c.commentaryAttributes?.publication_date}`
+	);
+	$: commentaryOptions = Object.keys(commentCountsByCommentary)
+		.sort()
+		.map((c) => ({
+			extra: commentCountsByCommentary[c],
+			label: c
+		}));
 	$: showHeatmap = true;
 
 	onMount(() => {
@@ -93,6 +106,8 @@
 		</div>
 		<section class="col-span-2">
 			<Navigation {passages} currentPassageUrn={currentPassage.urn} />
+			<div class="py-2" />
+			<FilterList options={commentaryOptions} />
 		</section>
 		<section class="col-span-5 overflow-y-scroll -mt-4">
 			{#each textContainers as textContainer}
