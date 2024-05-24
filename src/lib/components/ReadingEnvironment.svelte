@@ -16,18 +16,24 @@
 	export let passages: PassageConfig[];
 	export let textContainers: TextContainer[];
 
-	$: commentCountsByCommentary = _.countBy(
-		comments,
-		(c) =>
-			c.commentaryAttributes?.creators?.map((cc) => cc.last_name).join(', ') +
-			` ${c.commentaryAttributes?.publication_date}`
+	$: commentCountsByCommentary = _.countBy(comments, (c) => c.commentaryAttributes?.pid);
+	$: commentaryOptions = _.sortBy(
+		Object.keys(commentCountsByCommentary).map((c) => {
+			const attributes =
+				comments.find((comment) => comment.commentaryAttributes?.pid === c)?.commentaryAttributes ||
+				{};
+			const label = `${attributes.creators?.map((cc) => cc.last_name).join(', ')} ${attributes.publication_date}`;
+
+			return { extra: commentCountsByCommentary[c], label, pid: c };
+		}),
+		(o) => o.label
 	);
-	$: commentaryOptions = Object.keys(commentCountsByCommentary)
-		.sort()
-		.map((c) => ({
-			extra: commentCountsByCommentary[c],
-			label: c
-		}));
+	$: filteredComments = comments.filter((c) =>
+		selectedCommentaries.length > 0
+			? selectedCommentaries.includes(c.commentaryAttributes?.pid || '')
+			: true
+	);
+	$: selectedCommentaries = [] as string[];
 	$: showHeatmap = true;
 
 	onMount(() => {
@@ -37,6 +43,10 @@
 			highlightComments([commentToHighlight]);
 		}
 	});
+
+	function handleCommentaryFiltersChange(e: CustomEvent) {
+		selectedCommentaries = e.detail.selectedOptions;
+	}
 
 	function handleHighlightComments(e: CustomEvent) {
 		highlightComments(e.detail);
@@ -107,7 +117,7 @@
 		<section class="col-span-2">
 			<Navigation {passages} currentPassageUrn={currentPassage.urn} />
 			<div class="py-2" />
-			<FilterList options={commentaryOptions} />
+			<FilterList options={commentaryOptions} on:change={handleCommentaryFiltersChange} />
 		</section>
 		<section class="col-span-5 overflow-y-scroll -mt-4">
 			{#each textContainers as textContainer}
@@ -119,7 +129,7 @@
 			{/each}
 		</section>
 		<section class="overflow-y-scroll col-span-3 max-h-screen">
-			{#each comments as comment}
+			{#each filteredComments as comment}
 				<CollapsibleComment {comment} />
 			{/each}
 		</section>
