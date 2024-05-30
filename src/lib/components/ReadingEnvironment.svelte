@@ -123,6 +123,11 @@
 			{#each textContainers as textContainer}
 				<CitableTextContainer
 					{textContainer}
+					comments={selectedCommentaries.length > 0
+						? (textContainer.comments || []).filter((c) =>
+								selectedCommentaries.includes(c.commentaryAttributes?.pid || '')
+							)
+						: textContainer.comments || []}
 					on:highlightComments={handleHighlightComments}
 					{showHeatmap}
 				/>

@@ -10,6 +10,7 @@
 
 	const dispatch = createEventDispatcher();
 
+	export let comments: Comment[];
 	export let showHeatmap: boolean;
 	export let textContainer: TextContainer;
 
@@ -82,13 +83,13 @@
 
 	$: ctsUrn = new CTS_URN(textContainer.urn);
 	$: wholeLineComments =
-		textContainer.comments
+		comments
 			?.filter((c) => !c.ctsUrn.tokens.some((t: string | undefined) => Boolean(t)))
 			.filter((c) => ctsUrn.hasEqualStart(c.ctsUrn)) || [];
 	$: tokens = textContainer.words.map((w, _index, allWords) => {
 		return {
 			...w,
-			comments: textContainer.comments
+			comments: comments
 				?.filter((c) => c.ctsUrn.tokens.some((t: string | undefined) => Boolean(t)))
 				.filter((c) => {
 					const commentUrn = new CTS_URN(c.ctsUrn.__urn);
