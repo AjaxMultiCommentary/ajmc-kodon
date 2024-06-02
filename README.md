@@ -1,8 +1,9 @@
 # Kōdōn (κώδων)
 
-> φώνημ᾽ ἀκούω καὶ ξυναρπάζω φρενὶ / χαλκοστόμου κώδωνος ὡς Τυρσηνικῆς.
+> | φώνημ᾽ ἀκούω καὶ ξυναρπάζω φρενὶ
+> | χαλκοστόμου κώδωνος ὡς Τυρσηνικῆς.
 
-> I hear your voice and grasp it in my mind, / like the voice of a bronze-belled Tyrrhenian trumpet. -- Sophocles, _Ajax_ ll. 16–17
+> I hear your voice and grasp it in my mind, / like the voice of a bronze-belled Tyrrhenian trumpet. – Sophocles, _Ajax_ ll. 16–17
 
 Part of the [Ajax Multi-Commentary](https://github.com/AjaxMultiCommentary/) project, Kōdōn (Greek for the "bell of a trumpet") is a minimal computing platform for authoring and compiling (multi-)commentaries.
 
