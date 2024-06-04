@@ -35,6 +35,34 @@ Like commentaries, translations must point to a critical edition of the text.
 
 **TODO**: Specify how translations should work.
 
+## AjMC Development
+
+### Ingesting changes in the commentaries
+
+In order to update the commentaries used here, make sure that you have set the following environment variables:
+
+- `GITHUB_API_TOKEN`: Needed to access the `commentaries_data` repository
+- `ZOTERO_API_TOKEN`: Needed to access the Zotero API for bibliographic data
+- `ZOTERO_API_URL`: E.g, https://api.zotero.org/groups/{GROUP_ID}/, where `GROUP_ID` is the ID of the group containing the bibliographic information for the commentaries
+
+You will also need to have a recent version of the the Elixir runtime available on your system. With Homebrew on macOS, run
+
+```sh
+$ brew install elixir
+```
+
+See https://elixir-lang.org/install.html for more information.
+
+Finally, you can now run
+
+```sh
+$ elixir support/ingestion_scripts/canonical_commentaries.exs
+```
+
+This script will update the `commentaries/` directory with the latest changes from the `commentaries_data` repository.
+
+**!!! NB !!!**: For now, this will overwrite any changes that have been manually made to the markdown commentaries.
+
 ## License
 
 Copyright 2024 Matteo Romanello, Ajax Multi-Commentary Project
