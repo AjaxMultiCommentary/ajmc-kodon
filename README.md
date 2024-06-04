@@ -35,6 +35,30 @@ Like commentaries, translations must point to a critical edition of the text.
 
 **TODO**: Specify how translations should work.
 
+## Development
+
+To develop and run the application locally, make sure you have Node.js and NPM installed. See https://docs.npmjs.com/downloading-and-installing-node-js-and-npm for help.
+
+### Installing dependencies
+
+With `node` and `npm` installed, you can install the application's dependencies locally by running
+
+```sh
+$ npm install
+```
+
+from the root directory (the same directory that contains this README).
+
+### Running the application
+
+To run the application locally, use
+
+```sh
+$ npm run dev
+```
+
+This will start a development server at localhost:5137 by default. Any changes that you make to the application code should be picked up automatically. If for some reason they are not, try restarting the server.
+
 ## AjMC Development
 
 ### Ingesting changes in the commentaries
