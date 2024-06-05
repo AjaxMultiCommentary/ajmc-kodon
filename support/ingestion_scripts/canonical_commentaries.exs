@@ -492,7 +492,9 @@ defmodule CanonicalCommentaries do
 
             start_offset
           else
-            first_word["text"] |> String.replace(~r/[,.'·]/, "")
+            first_word["text"]
+            |> String.replace(~r/[,.'·ʼ]$/, "")
+            |> String.replace_invalid("")
           end
 
         first_word_s =
@@ -506,7 +508,10 @@ defmodule CanonicalCommentaries do
           if second_word == first_word && line_1 == line_2 do
             ""
           else
-            t = second_word["text"] |> String.replace(~r/[,.'·]/, "")
+            t =
+              second_word["text"]
+              |> String.replace(~r/[,.'·ʼ]$/, "")
+              |> String.replace_invalid("")
 
             if second_word_index == 1 do
               "-#{line_2}@#{t}"

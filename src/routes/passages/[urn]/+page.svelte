@@ -4,11 +4,11 @@
 
 	export let data;
 
-	$: comments = data.comments as Comment[];
-	$: currentPassage = data.currentPassage as PassageConfig;
+	$: comments = data.comments as unknown as Comment[];
+	$: currentPassage = data.currentPassage as unknown as PassageConfig;
 	$: metadata = data.metadata;
-	$: passages = data.passages as PassageConfig[];
-	$: textContainers = data.textContainers as TextContainer[];
+	$: passages = data.passages as unknown as PassageConfig[];
+	$: textContainers = data.textContainers as unknown as TextContainer[];
 
 	function stripMarkdown(s: string): string {
 		return s.replace(/_|\*/gi, '');
