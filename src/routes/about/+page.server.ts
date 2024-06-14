@@ -1,14 +1,12 @@
 import fs from 'node:fs';
 
-
 import frontMatter from 'front-matter';
 import { error } from '@sveltejs/kit';
 import { marked } from 'marked';
 
-export const load = async ({ params, parent }) => {
+export const load = async ({ parent }) => {
     const { config } = await parent();
-    const catchAll = params.catchall;
-    const staticPage = config.static_pages.find((p: any) => p.path === `/${catchAll}`);
+    const staticPage = config.static_pages.find((p: any) => p.path === `/about`);
 
     if (!staticPage) {
         throw error(404, 'Page not found.');
