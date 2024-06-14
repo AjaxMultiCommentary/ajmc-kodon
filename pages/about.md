@@ -8,7 +8,7 @@ title: 'About'
 
 ## About the AjMC platform
 
-The AjMC platform enables the non-linear, comparative reading of 17 commentaries on _Ajax_ (for the detailed corpus composition see the [Bibliography page](/bibliography)). Commentaries in the public domain are openly accessible, while those under copyright are accessible exclusively to logged in users.
+The AjMC platform enables the non-linear, comparative reading of 17 commentaries on _Ajax_ (for the detailed corpus composition see the [Bibliography page](https://ajmc.unil.ch/bibliography)). Commentaries in the public domain are openly accessible, while those under copyright are accessible exclusively to logged in users.
 
 **NB**: The current release of the platform is work-in-progress; new features will be added in future releases and the underlying data is continuosly being improved.
 
