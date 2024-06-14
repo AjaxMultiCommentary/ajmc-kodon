@@ -1,16 +1,11 @@
 import fs from 'node:fs';
 
 import frontMatter from 'front-matter';
-import { error } from '@sveltejs/kit';
 import { marked } from 'marked';
 
 export const load = async ({ parent }) => {
     const { config } = await parent();
     const staticPage = config.static_pages.find((p: any) => p.path === `/about`);
-
-    if (!staticPage) {
-        throw error(404, 'Page not found.');
-    }
 
     const s = fs.readFileSync(staticPage.file_path, 'utf-8');
     const { attributes, body: rawBody } = frontMatter(s);
