@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import frontMatter from 'front-matter';
 import { marked } from 'marked';
 
+export const prerender = true;
+
 export const load = async ({ parent }) => {
     const { config } = await parent();
     const staticPage = config.static_pages.find((p: any) => p.path === `/about`);
