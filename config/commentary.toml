@@ -1,5 +1,6 @@
 title = "_Ajax_ Multi-Commentary"
 description = "A digital platform for the comparative analysis of commentaries on Sophocles’ _Ajax_"
+bibliographies_directory = "bibliographies"
 commentaries_directory = "commentaries"
 editions_directory = "out/editions"
 
@@ -7,6 +8,11 @@ editions_directory = "out/editions"
 title = "About"
 path = "/about"
 file_path = "pages/about.md"
+
+[[static_pages]]
+title = "Bibliography"
+path = "/bibliography"
+file_path = ""
 
 [[table_of_contents]]    
 label = "Prologue" 

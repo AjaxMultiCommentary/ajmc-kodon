@@ -11,5 +11,5 @@ export const load = async ({ params: { urn = '' }, parent }) => {
     const parentData = await parent();
     const config = parentData.config;
 
-    return loadPassage(config, urn);
+    return loadPassage(config)(urn);
 };
