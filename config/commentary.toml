@@ -3,6 +3,7 @@ description = "A digital platform for the comparative analysis of commentaries o
 bibliographies_directory = "bibliographies"
 commentaries_directory = "commentaries"
 editions_directory = "out/editions"
+home_page = "pages/home.md"
 
 [[static_pages]]
 title = "About"
@@ -13,6 +14,7 @@ file_path = "pages/about.md"
 title = "Bibliography"
 path = "/bibliography"
 file_path = ""
+
 
 [[table_of_contents]]    
 label = "Prologue" 
