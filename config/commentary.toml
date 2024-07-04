@@ -6,14 +6,15 @@ editions_directory = "out/editions"
 home_page = "pages/home.md"
 
 [[static_pages]]
-title = "About"
-path = "/about"
-file_path = "pages/about.md"
-
-[[static_pages]]
 title = "Bibliography"
 path = "/bibliography"
 file_path = ""
+
+
+[[static_pages]]
+title = "About"
+path = "/about"
+file_path = "pages/about.md"
 
 
 [[table_of_contents]]    
