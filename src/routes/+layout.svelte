@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { base } from '$app/paths';
+
 	import { Header } from 'kodon';
 	import '../app.css';
 
@@ -8,6 +10,8 @@
 </script>
 
 <main class="px-4">
-	<Header title={data.title} staticPages={data.staticPages} />
+	<Header title={data.title} staticPages={data.staticPages}>
+		<a href="{base}/passages" class="link link-hover">Multi-Commentary</a>
+	</Header>
 	<slot />
 </main>
