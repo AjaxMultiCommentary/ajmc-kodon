@@ -13,6 +13,15 @@
 	function stripMarkdown(s: string): string {
 		return s.replace(/_|\*/gi, '');
 	}
+
+	const heatmapTooltip = `The highlights below illustrate the "density" of 
+comments on a particular lemma or line. 
+Darker shades of blue indicate a greater number of glosses on the 
+highlighted portion of the text.`;
+	const filterListTooltip = `Use this filter to show or hide comments on the right. You can search for a commentary by name using the text box.`;
+	const navigationTooltip = `This synopsis is based on the Lloyd-Jones edition of the text,
+                    and the line numbers might not line up exactly with other editions.
+                    Click on a section of the synopsis to view it in the critical text area.`;
 </script>
 
 <svelte:head>
@@ -21,8 +30,11 @@
 <ReadingEnvironment
 	{comments}
 	{currentPassage}
+	{heatmapTooltip}
+	{filterListTooltip}
 	{metadata}
-	iiifURL="https://raw.githubusercontent.com/AjaxMultiCommentary/ajmc_iiif/main/docs"
+	{navigationTooltip}
 	{passages}
 	{textContainers}
+	iiifURL="https://raw.githubusercontent.com/AjaxMultiCommentary/ajmc_iiif/main/docs"
 />
