@@ -258,7 +258,7 @@ defmodule EditionsIngestion do
     }
   end
 
-  def enumerate_words(text, word_count) do
+  def enumerate_words(urn, text, word_count) do
     words_with_index =
       Regex.split(~r/[[:space:]]|—/, text)
       |> Enum.with_index()
@@ -274,12 +274,14 @@ defmodule EditionsIngestion do
 
       [left, right] = String.split(current_text, word, parts: 2)
       offset = current_offset + String.length(left)
+      urn_index = Enum.count(ws, fn w -> w.text == word end) + 1
 
       w = %{
         xml_id: "word_index_#{index + word_count}",
         offset: offset,
         text: word,
-        urn_index: Enum.count(ws, fn w -> w.text == word end) + 1
+        urn: "#{urn}@#{word}[#{urn_index}]",
+        urn_index: urn_index
       }
 
       %{offset: offset + String.length(word), current_text: right, words: [w | ws]}
@@ -303,7 +305,7 @@ defmodule EditionsIngestion do
         text = line.text |> String.trim()
         word_count = acc.word_count
 
-        words = enumerate_words(text, word_count)
+        words = enumerate_words("#{urn}:#{line.n}", text, word_count)
 
         speaker =
           version_body.body.speakers
