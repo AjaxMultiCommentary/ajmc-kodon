@@ -32,7 +32,6 @@ highlighted portion of the text.`;
 	{currentPassage}
 	{heatmapTooltip}
 	{filterListTooltip}
-	{metadata}
 	{navigationTooltip}
 	{passages}
 	{textContainers}
