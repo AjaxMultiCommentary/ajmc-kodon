@@ -29,7 +29,7 @@ highlighted portion of the text.`;
 	<title>{stripMarkdown(metadata.title)}</title>
 </svelte:head>
 <ReadingEnvironment
-	currentURL={$page.url.toString()}
+	currentURL={$page.url}
 	{comments}
 	{currentPassage}
 	{heatmapTooltip}
