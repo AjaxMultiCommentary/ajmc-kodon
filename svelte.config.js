@@ -24,7 +24,8 @@ const config = {
 		},
 		prerender: {
 			entries: [...prerenderPaths, '/about'],
-			handleHttpError: 'warn'
+			handleHttpError: 'warn',
+			handleMissingId: 'ignore'
 		}
 	}
 };
