@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Bibliography, WikidataBibliography } from 'kodon';
+	import { Bibliography, Tooltip, WikidataBibliography } from 'kodon';
 
 	export let data;
 
@@ -10,27 +10,34 @@
 </script>
 
 <div role="tablist" class="tabs tabs-bordered">
-	<input
-		type="radio"
-		name="bibliography"
+	<a
 		role="tab"
 		class="tab"
-		aria-label="Core Bibliography"
-		checked={activeTab === 'core-bibliography'}
-	/>
-	<div role="tabpanel" class="tab-content">
-		<Bibliography {bibliographies} {csls} />
-	</div>
+		class:tab-active={activeTab === 'core-bibliography'}
+		href="#core-bibliography"
+		on:click={() => (activeTab = 'core-bibliography')}
+		><span class="mr-2">Core Bibliography</span>
+		<Tooltip
+			text={`This bibliography lists the commentaries that were used to create the multi-commentary. N.B.: only commentaries in the public domain are accessible via the application.`}
+		/></a
+	>
+	<a
+		role="tab"
+		class="tab"
+		class:tab-active={activeTab === 'extended-bibliography'}
+		href="#extended-bibliography"
+		on:click={() => (activeTab = 'extended-bibliography')}
+		><span class="mr-2">Extended Bibliography</span>
+		<Tooltip
+			text={`This bibliography lists all publications cited by core commentaries (it currently includes Ferrari's bibliography; Stanford's and Garvie's will be added soon).`}
+		/></a
+	>
+</div>
 
-	<input
-		type="radio"
-		name="bibliography"
-		role="tab"
-		class="tab"
-		aria-label="Extended Bibliography"
-		checked={activeTab === 'extended-bibliography'}
-	/>
-	<div role="tabpanel" class="tab-content">
+<div class="mb-8 border border-t-transparent p-4">
+	{#if activeTab === 'core-bibliography'}
+		<Bibliography {bibliographies} {csls} />
+	{:else}
 		<WikidataBibliography citations={wikidataCitations} />
-	</div>
+	{/if}
 </div>
