@@ -21,12 +21,8 @@ export const load: PageServerLoad = async ({ parent }) => {
 
 		return {
 			...citation,
-			citations
-		};
-
-		return {
-			...citation,
-			citations
+			citations,
+			wikidataURL: citation.subject.value
 		};
 	});
 
