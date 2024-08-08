@@ -20,7 +20,7 @@ const config = {
 			strict: false
 		}),
 		paths: {
-			base: process.argv.includes('dev') ? '/ajmc-kodon' : process.env.BASE_PATH
+			base: process.env.BASE_PATH
 		},
 		prerender: {
 			entries: [...prerenderPaths, '/about'],
