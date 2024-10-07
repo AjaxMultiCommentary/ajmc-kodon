@@ -37,5 +37,5 @@ highlighted portion of the text.`;
 	{navigationTooltip}
 	{passages}
 	{textContainers}
-	iiifURL="https://raw.githubusercontent.com/AjaxMultiCommentary/ajmc_iiif/main/docs"
+	iiifURL="https://iiif.ajmc.ch/"
 />
