@@ -220,25 +220,25 @@ defmodule EditionsIngestion do
 
     lines
     |> Enum.with_index()
-    |> Enum.each(fn {line, offset} ->
-      json = line_to_json(line, offset)
+    |> Enum.each(fn {line, index} ->
+      json = line_to_json(line, index)
 
       File.write!(new_f, Jason.encode!(json) <> "\n", [:append])
 
-      line_elements_to_json(line, offset)
+      line_elements_to_json(line, index)
       |> Enum.each(fn e ->
         File.write!(new_f, Jason.encode!(e) <> "\n", [:append])
       end)
     end)
   end
 
-  defp line_elements_to_json(line, offset) do
+  defp line_elements_to_json(line, index) do
     line.elements
     |> Enum.map(fn element ->
       %{
         attributes: Map.new(element.attributes),
         end_offset: element.end_offset,
-        line_offset: offset,
+        block_index: index,
         start_offset: element.start_offset,
         type: "text_element",
         subtype: element.name
@@ -246,13 +246,13 @@ defmodule EditionsIngestion do
     end)
   end
 
-  defp line_to_json(line, offset) do
+  defp line_to_json(line, index) do
     %{
-      offset: offset,
+      index: index,
       location: line.location,
       text: line.text,
       type: "text_container",
-      subtype: "line",
+      subtype: "l",
       urn: line.urn,
       words: line.words
     }

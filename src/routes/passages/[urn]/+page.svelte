@@ -23,6 +23,7 @@ highlighted portion of the text.`;
 	const navigationTooltip = `This synopsis is based on the Lloyd-Jones edition of the text,
                     and the line numbers might not line up exactly with other editions.
                     Click on a section of the synopsis to view it in the critical text area.`;
+	const tableViewTooltip = `Use this view to show a tabular layout of each token along with its number of glossae and their URNs.`;
 </script>
 
 <svelte:head>
@@ -37,5 +38,6 @@ highlighted portion of the text.`;
 	{navigationTooltip}
 	{passages}
 	{textContainers}
+	{tableViewTooltip}
 	iiifURL="https://iiif.ajmc.ch/"
 />
