@@ -14,9 +14,15 @@
 	let { data, children }: Props = $props();
 </script>
 
-<main class="px-4">
+<svelte:head>
+	<title>AjMC</title>
+</svelte:head>
+
+<div>
 	<Header title={data.title} staticPages={data.staticPages}>
-		<a href="{base}/passages" class="link link-hover">Multi-Commentary</a>
+		<a href="{base}/passages" class="btn btn-link">Multi-Commentary</a>
 	</Header>
-	{@render children?.()}
-</main>
+	<main class="px-4">
+		{@render children?.()}
+	</main>
+</div>

@@ -29,8 +29,8 @@ highlighted portion of the text.`;
 <svelte:head>
 	<title>{stripMarkdown(metadata.title)}</title>
 </svelte:head>
+
 <ReadingEnvironment
-	DaisyUITheme="nord"
 	currentURL={$page.url}
 	{comments}
 	{currentPassage}
