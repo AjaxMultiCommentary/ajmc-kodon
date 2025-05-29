@@ -1,11 +1,15 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: config = data.config;
-	$: body = data.body;
-	$: title = data.title;
+	let { data }: Props = $props();
+
+	let config = $derived(data.config);
+	let body = $derived(data.body);
+	let title = $derived(data.title);
 
 	function stripMarkdown(s: string): string {
 		return s.replace(/_|\*/gi, '');

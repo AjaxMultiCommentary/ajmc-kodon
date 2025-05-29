@@ -6,9 +6,6 @@ export default {
 		'./src/**/*.{html,js,svelte,ts}',
 		join(require.resolve('kodon'), '../**/*.{html,js,svelte,ts}')
 	],
-	daisyui: {
-		themes: ['corporate']
-	},
 	theme: {
 		extend: {
 			fontFamily: {
@@ -17,5 +14,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require('@tailwindcss/typography'), require('daisyui')]
+	plugins: [require('@tailwindcss/typography')]
 };
