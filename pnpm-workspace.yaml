@@ -1,0 +1,5 @@
+onlyBuiltDependencies:
+  - esbuild
+  - svelte-preprocess
+overrides:
+  kodon: link:../../../Library/pnpm/global/5/node_modules/kodon
