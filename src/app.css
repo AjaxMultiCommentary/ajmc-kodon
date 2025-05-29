@@ -4,7 +4,7 @@
 	themes: 'corporate';
 }
 
-@source '../node_modules/kodon/src';
+@source '../node_modules/kodon';
 
 @plugin '@tailwindcss/typography';
 
