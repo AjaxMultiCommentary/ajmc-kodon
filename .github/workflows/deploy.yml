@@ -32,6 +32,16 @@ jobs:
         run: |
           npm run build
 
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Committing the built application
+          branch: main
+          commit_options: '--no-verify --signoff'
+          commit_author: Author <actions@github.com>
+          status_options: '--untracked-files=no'
+          skip_dirty_check: true
+
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
