@@ -1,5 +1,8 @@
 # The Ajax Multi-Commentary: A minimal computing approach
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15551111.svg)](https://doi.org/10.5281/zenodo.15551111)
+
+
 Based on [Kōdōn](https://github.com/ajaxMultiCommentary/kodon).
 
 ## Development
