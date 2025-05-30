@@ -5,6 +5,10 @@
 
 Based on [Kōdōn](https://github.com/ajaxMultiCommentary/kodon).
 
+🎥 Watch a short video introduction:
+
+[![Watch the video](https://img.youtube.com/vi/pHVWaBR02pY/default.jpg)](https://youtu.be/pHVWaBR02pY)
+
 ## Development
 
 To develop and run the application locally, make sure you have Node.js and NPM installed. See https://docs.npmjs.com/downloading-and-installing-node-js-and-npm for help.
