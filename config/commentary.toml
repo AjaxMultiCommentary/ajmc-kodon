@@ -17,14 +17,14 @@ path = "/about"
 file_path = "pages/about.md"
 
 
-[[table_of_contents]]    
-label = "Prologue" 
-urn = "urn:cts:greekLit:tlg0011.tlg003:1-133" 
+[[table_of_contents]]
+label = "Prologue"
+urn = "urn:cts:greekLit:tlg0011.tlg003:1-133"
 ref = "vv. 1-133"
 
 [[table_of_contents]]
-label = "*Parodos*" 
-urn = "urn:cts:greekLit:tlg0011.tlg003:144-200" 
+label = "*Parodos*"
+urn = "urn:cts:greekLit:tlg0011.tlg003:144-200"
 ref = "vv. 144-200"
 
 [[table_of_contents]]
