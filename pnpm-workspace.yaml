@@ -3,3 +3,5 @@ allowBuilds:
   kodon: true
 onlyBuiltDependencies:
   - esbuild
+packages:
+  - 'src/**'
